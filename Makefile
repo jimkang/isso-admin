@@ -14,7 +14,10 @@ pushall:
 	git push origin main
 
 sync:
-	rsync -avz $(HOMEDIR) $(USER)@$(SERVER):/opt/ --exclude db/ \
+	rsync -avz $(HOMEDIR) $(USER)@$(SERVER):/opt/ --exclude db/
+
+pull-db:
+	scp $(USER)@$(SERVER):$(APPDIR)/db/comments.db db
 
 update-remote: sync restart-remote
 
